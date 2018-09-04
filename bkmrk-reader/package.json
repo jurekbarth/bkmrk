@@ -1,0 +1,28 @@
+{
+  "name": "bkmrk-reader",
+  "version": "1.0.0",
+  "description": "Serves Html contents",
+  "main": "index.js",
+  "scripts": {
+    "start":
+      "env $(cat /Users/jurekbarth/dev/bkmrk/variables.env) nodemon --experimental-modules src/index.mjs",
+    "production": "node --experimental-modules src/index.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jurekbarth/bkmrk.git"
+  },
+  "author": "Jurek Barth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jurekbarth/bkmrk/issues"
+  },
+  "homepage": "https://github.com/jurekbarth/bkmrk#readme",
+  "dependencies": {
+    "compression": "^1.7.1",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.11"
+  }
+}

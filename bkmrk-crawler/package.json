@@ -1,0 +1,36 @@
+{
+  "name": "bkmrk-crawler",
+  "version": "1.0.0",
+  "description": "Crawler for a bookmarking service",
+  "main": "src/index.mjs",
+  "scripts": {
+    "start":
+      "env $(cat /Users/jurekbarth/dev/bkmrk/variables.env) nodemon --experimental-modules src/index.mjs",
+    "production": "node --experimental-modules src/index.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jurekbarth/bkmrk.git"
+  },
+  "keywords": ["bookmarking"],
+  "author": "Jurek Barth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jurekbarth/bkmrk/issues"
+  },
+  "homepage": "https://github.com/jurekbarth/bkmrk#readme",
+  "dependencies": {
+    "basic-auth-connect": "^1.0.0",
+    "body-parser": "^1.18.2",
+    "cloudinary": "^1.9.1",
+    "dockerode": "^2.5.3",
+    "express": "^4.16.2",
+    "kue": "^0.11.6",
+    "metascraper": "^3.4.3",
+    "node-fetch": "^1.7.3",
+    "nodemon": "^1.14.7",
+    "pg": "^6.4.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.28.6"
+  }
+}

@@ -1,0 +1,79 @@
+version: '2'
+services:
+  backend:
+    image: "jurekbarth/bkmrk-backend"
+    restart: always
+    env_file:
+      - docker.env
+    links:
+    - crawler:crawler
+    - postgres:postgres
+    ports:
+      - 3000:3000
+    expose:
+      - "3000"
+    labels:
+      traefik.backend: backend
+      traefik.frontend.entryPoints: 'https'
+      traefik.frontend.rule: 'Host:api.bkmrk.space'
+      traefik.port: '3000'
+      traefik.docker.network: 'bkmrk_default'
+  crawler:
+    image: "jurekbarth/bkmrk-crawler"
+    restart: always
+    env_file:
+      - docker.env
+    links:
+      - redis:redis
+      - postgres:postgres
+    ports:
+      - 3001:3001
+    expose:
+      - "3001"
+    volumes:
+    - '/Users/jurekbarth/dev/bkmrk/data:/bkmrkData'
+    - /var/run/docker.sock:/var/run/docker.sock
+  reader:
+    image: "jurekbarth/bkmrk-reader"
+    restart: always
+    env_file:
+      - docker.env
+    ports:
+      - 3005:3005
+    expose:
+      - "3005"
+    volumes:
+    - '/Users/jurekbarth/dev/bkmrk/data:/bkmrkData'
+    labels:
+      traefik.backend: reader
+      traefik.frontend.entryPoints: 'https'
+      traefik.frontend.rule: 'Host:reader.bkmrk.space'
+      traefik.port: '3005'
+      traefik.docker.network: 'bkmrk_default'
+  frontend:
+    image: "jurekbarth/bkmrk-frontend"
+    restart: always
+    ports:
+      - 8080:8080
+    expose:
+      - "3002"
+    volumes:
+    - '/Users/jurekbarth/dev/bkmrk/data:/bkmrkData'
+    labels:
+      traefik.backend: frontend
+      traefik.frontend.entryPoints: 'https'
+      traefik.frontend.rule: 'Host:bkmrk.space'
+      traefik.port: '8080'
+      traefik.docker.network: 'bkmrk_default'
+  redis:
+    image: redis
+    restart: always
+  postgres:
+    image: postgres
+    restart: always
+    expose:
+      - "5432"
+    env_file:
+      - docker.env
+    volumes:
+      - '/Users/jurekbarth/dev/bkmrk/data/postgres:/var/lib/postgresql/data'

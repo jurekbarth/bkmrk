@@ -1,0 +1,12 @@
+extends email-layout
+
+block content
+  img(src="https://bkmrk.space/static/l.png", alt="logo")
+  br
+  br
+  h2 Nur noch ein Schritt
+  p Hi 👨‍🚀,
+  p Wir freuen uns über deine Anmeldung bei bkmrk.space. Wir hoffen dir gefällt bkrmk und freuen uns auf dein Feedback
+  P Klicke den Button und deinen bkmrk.space Account zu aktivieren
+  +button(token, 'Account aktivieren')
+  p Wenn der Button nicht funktioniert verwende diese URL: #{token}

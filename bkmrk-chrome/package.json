@@ -1,0 +1,22 @@
+{
+  "name": "bkmrk-chrome",
+  "version": "1.0.0",
+  "description": "Spin up chrome and make screenshot",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jurekbarth/bkmrk.git"
+  },
+  "author": "Jurek Barth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jurekbarth/bkmrk/issues"
+  },
+  "homepage": "https://github.com/jurekbarth/bkmrk#readme",
+  "dependencies": {
+    "chrome-remote-interface": "^0.25.5"
+  }
+}
